@@ -11,11 +11,21 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+// -------------------- Page Route --------------------
 
-Route::get('home', 'HomeController@index');
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+Route::get('/', [
+    'as' => 'home',
+    'uses' => 'PageController@home',
 ]);
+
+// -------------------- Student Route --------------------
+
+Route::resource('students', 'StudentController');
+
+// -------------------- Project Route --------------------
+
+Route::resource('projects', 'ProjectController');
+
+// --------------------- Login Route ---------------------
+
+Route::get('/login','StudentController@login');

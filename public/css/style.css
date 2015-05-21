@@ -1,0 +1,132 @@
+body {
+    padding: 50px 0;
+    background: url(/images/background.jpg);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.tags {
+    margin-left: 8px;
+}
+
+.icon {
+    width: 64px;
+    border-radius: 50%;
+}
+
+.students-index h3, .students-list h3, .student h3 {
+    display: inline-block;
+}
+
+.tag {
+    margin-left: 8px;
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+}
+/* 首页 */
+/* 滚动新闻 */
+.carousel {
+    margin-bottom: 50px;
+    height: 400px;
+    background-color: #000000;
+}
+
+.carousel .item {
+    height: 400px;
+    background-color: #000000;
+}
+
+.carousel img {
+    width: 100%;
+}
+
+.carousel-caption {
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 2em;
+}
+
+/* 学生简介 */
+.students-index {
+    margin-bottom: 50px;
+}
+
+.students-index .student-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #cccccc;
+    background-color: #ffffff;
+}
+
+.students-list-a {
+    margin-bottom: 20px;
+}
+
+/* 项目简介 */
+.projects-index {
+    margin-bottom: 50px;
+}
+
+.projects-index .project-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #cccccc;
+    background-color: #ffffff;
+}
+
+.projects-list-a {
+    margin-bottom: 20px;
+}
+
+/* 版权信息 */
+footer {
+
+}
+
+/* 学生列表页 */
+.students-list {
+    padding-top: 20px;
+}
+
+.students-list {
+    margin-bottom: 50px;
+}
+
+.students-list .student-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #cccccc;
+    background-color: #ffffff;
+}
+
+
+/* 学生详情页 */
+/* 学生详细信息 */
+.student {
+    margin-bottom: 50px;
+    padding-top: 20px;
+}
+
+.student .student-item, .student-project {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #cccccc;
+    background-color: #ffffff;
+}
