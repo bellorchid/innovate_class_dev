@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+</br></br></br>
     <!-- 学生详情 -->
     <div class="student">
         <div class="row">

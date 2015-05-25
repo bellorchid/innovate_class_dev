@@ -15,22 +15,23 @@
 <!--Google Fonts-->
 </head>
 <body>
+ @include('errors.list')
 <div class="login">
 	<h2>InnovateClass</h2>
 	<div class="login-top">
 		<h1>后台登陆</h1>
-		<form method="post" action="{{asset('')}}">
-			<input type="text" value="User Id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
-			<input type="password" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
-	    </form>
-	    <div class="forgot">
-	    	<a href="#">忘记密码</a>
-	    	<input type="submit" value="登陆" >
-	    </div>
+		{!! Form::open(['url' => '/login', 'class' => 'form-horizontal', 'role' => 'form']) !!}
+			{!! Form::text('id', old('id'), ['class' => 'form-control', 'required']) !!}
+			{!! Form::password('password', ['class' => 'form-control', 'required']) !!}
+		    <div class="forgot">
+		    	<a href="#">忘记密码</a>
+		    	{!! Form::submit('登陆', ['class' => 'btn btn-primary']) !!}
+		    </div>
 	</div>
 	<div class="login-bottom">
 		<h3>没有账号？没关系 &nbsp <a href="#">注册</a></h3>
 	</div>
+		{!! Form::close() !!}
 </div>	
 
 

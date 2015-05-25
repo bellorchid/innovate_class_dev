@@ -7,24 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css"  href="{{ asset('/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css"  href="{{ asset('/css/style.css')}}">
+        <style type="text/css">
+
+
+    </style>
 </head>
 <body>
+<div class="header">
 <!-- 导航条 -->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+ <!--            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>
+            </button> -->
             <a class="navbar-brand" href="/">InnovateClass</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href= "{{asset('/')}}">首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href= "{{asset('/')}}">首页 <span class="sr-only">(current)</span></a></li>
+                <!-- class='active' -->
                 <li><a href="{{asset('/students')}}">实验班成员</a></li>
                 <li><a href="{{asset('/projects')}}">实验班作品</a></li>
                 <!--                    <li class="dropdown">-->
@@ -42,23 +48,25 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-toggle="modal" data-target="#login">登录</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#login">登陆</a></li>
             </ul>
         </div>
     </div>
 </nav><!-- /导航条 -->
 
 @yield('content')
-
+</div>
+<div class="app-footer">
 <footer>
     <div class="container">
+        </br>
         <a href="#" class="pull-right">回到顶部</a>
         <p><span class="glyphicon glyphicon-copyright-mark"></span> 2014&nbsp;-&nbsp;{{ date('Y') }}&nbsp;实验班</p>
     </div>
 </footer>
-
-<script src="../public/js/jquery-1.11.1.min.js"></script>
-<script src="../public/js/bootstrap.min.js"></script>
+</div>
+<script src="{{asset('/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{asset('/js/bootstrap.min.js')}}"></script>
 
 </body>
 

@@ -28,4 +28,33 @@ Route::resource('projects', 'ProjectController');
 
 // --------------------- Login Route ---------------------
 
-Route::get('/login','StudentController@login');
+Route::get('login', [
+    'middleware' => 'guest', 'as' => 'login', 'uses' => 'StudentController@loginGet']);
+Route::post('login', [
+    'middleware' => 'guest', 'uses' => 'StudentController@loginPost']);
+Route::get('logout', [
+    'middleware' => 'auth', 'as' => 'logout', 'uses' => 'StudentController@logout']);
+Route::controller('password', 'PasswordController');
+
+// ---------------- StudentDetail Route ------------------
+
+Route::get('student/home', [
+    'as' => 'stu_home', 'uses' => 'StudentController@home']);
+Route::get('student/edit', [
+    'as' => 'stu_edit', 'uses' => 'StudentController@edit']);
+Route::post('student/update', [
+    'as' => 'stu_update', 'uses' => 'StudentController@update']);
+
+//----------------- StudentProject Route -----------------
+
+Route::get('student/projects',[
+	'as' => 'stu_project', 'uses' => 'ProjectController@detail']);
+Route::get('project/edit', [
+	'as' => 'project_edit', 'uses' => 'ProjectController@deit']);
+Route::post('project/update', [
+	'as' => 'project_update', 'uses' => 'ProjectController@update']);
+
+// -----------------  Android Api -------------------------
+
+Route::get('/android',[
+	'as' => 'androidAPI','uses' => 'StudentController@index']);

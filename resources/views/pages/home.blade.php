@@ -11,7 +11,7 @@
 
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="../public/images/news/chrome-big.jpg" alt="Chrome">
+            <img src="../public/images/news/3.jpg" alt="Chrome">
             <div class="carousel-caption">
                 <h1></h1>
 
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="item">
-            <img src="../public/images/news/firefox-big.jpg" alt="Firefox">
+            <img src="../public/images/news/2.jpg" alt="Firefox">
             <div class="carousel-caption">
                 <h1></h1>
 
@@ -32,15 +32,15 @@
             </div>
         </div>
         <div class="item">
-            <img src="../public/images/news/safari-big.jpg" alt="Firefox">
-            <div class="carousel-caption">
+            <img src="../public/images/news/1.jpg" alt="Firefox">
+            <!-- <div class="carousel-caption">
                 <h1>Safari</h1>
 
                 <p>Safari，是苹果计算机的最新操作系统Mac OS X中的浏览器。</p>
 
                 <p><a class="btn btn-lg btn-primary" href="http://www.apple.com/cn/safari/" target="_blank"
                       role="button">点我下载</a></p>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -70,7 +70,7 @@
                     @foreach ($students as $student)
                     <div class="col-md-4">
                         <div class="student-item">
-                            <a href="/students/{{ $student->id }}"><img class="icon" src="../public/images/icons/chrome-logo-small.jpg" /> <h3>{{ $student->name }}</h3></a>
+                            <a href=""><img class="icon" src="../public/images/icons/chrome-logo-small.jpg" /> <h3>{{ $student->name }}</h3></a>
                             <a href="/students/{{ $student->id }}"><img class="photo" src="../public/images/news/chrome-big.jpg" /></a>
                         </div>
                     </div>
@@ -82,6 +82,22 @@
         <div class="col-md-4">
             <div class="row">
                 <div class="col-lg-12 projects-list-a"><a href="/projects" class="pull-right">更多作品</a></div>
+            </div>
+
+            <div class="projects-index">
+                <div class="row">
+                    @foreach ($projects as $project)
+                    <div class="col-md-12">
+                        <div class="project-item">
+                            <a href="/projects/{{ $project->id }}"><h3>{{ $project->name }}</h3></a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 projects-list-a"><a href="/projects" class="pull-right">更多新闻</a></div>
             </div>
 
             <div class="projects-index">
