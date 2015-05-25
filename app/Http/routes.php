@@ -58,3 +58,13 @@ Route::post('project/update', [
 
 Route::get('/android',[
 	'as' => 'androidAPI','uses' => 'StudentController@index']);
+
+
+
+
+
+
+
+// -----------------  test -------------------------
+Route::get('/test', [
+    'as' => 'test', 'uses' => 'StudentController@insert']);
