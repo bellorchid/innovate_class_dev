@@ -84,7 +84,7 @@ class StudentController extends Controller {
     $student = Auth::user();
     $id = Auth::user()->id;
     $detail = StudentDetail::find($id);
-    return view('admin.index')->withTitle("profile")->withStudent($student)->withDetail($detail);
+    return view('admin.index')->withTitle("个人页面")->withStudent($student)->withDetail($detail);
   }
 
   //显示学生修改页
@@ -106,6 +106,14 @@ class StudentController extends Controller {
   }
 
  
+  public function insert() {
+    $student = Student::find('12345678');
+    $project = project::find('12108238');
+
+    $student->projects()->attach($project->id);
+
+    // print_r($project);
+  }
 
 
 }
