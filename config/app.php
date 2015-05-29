@@ -136,6 +136,8 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
+		'YuanChao\Editor\EndaEditorServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -193,8 +195,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-		'Form'  => 'Illuminate\Html\FormFacade',
-		'HTML'  => 'Illuminate\Html\HtmlFacade',
+		'Form'  	=> 'Illuminate\Html\FormFacade',
+		'HTML'  	=> 'Illuminate\Html\HtmlFacade',
+		'Image' 	=> 'Intervention\Image\Facades\Image',
+		'EndaEditor' => 'YuanChao\Editor\Facade\EndaEditorFacade'
 
 	],
 

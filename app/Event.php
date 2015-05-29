@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model {
+class Event extends Model {
 
 
     protected $fillable = [

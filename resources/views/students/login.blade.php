@@ -21,15 +21,19 @@
 	<div class="login-top">
 		<h1>后台登陆</h1>
 		{!! Form::open(['url' => '/login', 'class' => 'form-horizontal', 'role' => 'form']) !!}
-			{!! Form::text('id', old('id'), ['class' => 'form-control', 'required']) !!}
-			{!! Form::password('password', ['class' => 'form-control', 'required']) !!}
+			<!-- {!! Form::text('id', '学号', ['class' => 'form-control','onfocus' => "this.value = '';",'required']) !!} -->
+			<!-- {!! Form::password('password', ['class' => 'form-control','onfocus' => "this.value = '';",'required']) !!} //因为不能隐藏默认输入-->
+			<input type="text" name="id" placeholder="学号">
+			<input type="password" name="password" placeholder="密码">
+
 		    <div class="forgot">
-		    	<a href="#">忘记密码</a>
+		    	<!-- <a href="#">忘记密码</a> -->
 		    	{!! Form::submit('登陆', ['class' => 'btn btn-primary']) !!}
 		    </div>
 	</div>
 	<div class="login-bottom">
-		<h3>没有账号？没关系 &nbsp <a href="#">注册</a></h3>
+		<!-- <h3>没有账号？没关系 &nbsp <a href="#">注册</a></h3> -->
+		<h3>没有账号？如果属于本班，请向管理员申请注册</h3>
 	</div>
 		{!! Form::close() !!}
 </div>	

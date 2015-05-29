@@ -9,6 +9,10 @@
     <link rel="stylesheet" type="text/css"  href="{{ asset('/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="../../public/todo/bower_components/todomvc-common/base.css">
     <style> [v-cloak] { display: none; } </style>
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+
 
 </head>
 <body>
@@ -23,7 +27,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button> -->
-            <a class="navbar-brand" href="/">InnovateClass</a>
+            <a class="navbar-brand" href="{{ url('/')}}">InnovateClass</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -47,11 +51,23 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-toggle="modal" data-target="#login">{{$student->name}}</a></li>
+                <!-- <li><a href="#" data-toggle="modal" data-target="#login">{{$student->name}}</a></li> -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/student/home')}}">个人中心</a></li>
+                                <li><a href="{{ url('/logout') }}">退出</a></li>
+                            </ul>
+                        </li>
             </ul>
         </div>
     </div>
 </nav><!-- /导航条 -->
+
+<div class="container">
+    </br></br></br>
+    @include ('flash')
+</div>
 
 @yield('content')
 </div>
@@ -64,20 +80,31 @@
     </div>
 </footer>
 </div>
-<script src="../js/jquery-1.11.1.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+
+</body>
+
+
 
 <script src="../../public/todo/bower_components/todomvc-common/vue.js"></script>
 <script>metrics.afterLoad = now()</script>
 <script src="../../public/todo/bower_components/director/director.js"></script>
-<script src="../..//todo/js/store.js"></script>
+<script src="../../public/todo/js/store.js"></script>
 <script>metrics.beforeRender = now()</script>
 <script src="../../public/todo/js/app.js"></script>
 <script src="../../public/todo/js/routes.js"></script>
 <script>metrics.afterRender = now()</script>
 <script src="../../public/todo/js/perf.js"></script>
-</body>
-
+<script>
+    var isPhantom = navigator.userAgent.indexOf('PhantomJS') > -1
+    if (isPhantom) {
+        localStorage.clear()
+    } else {
+        var now = window.performance && window.performance.now
+            ? function () { return window.performance.now() }
+            : Date.now
+        var metrics = { beforeLoad: now() }
+    }
+</script>
 <!-- 登录 -->
 <div class="modal fade" id="login">
     <div class="modal-dialog">

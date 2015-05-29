@@ -8,17 +8,17 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="profiles">
                 <div class="profile-personal">
-                    <img src="{{ asset('images/icons/chrome-logo-small.jpg')}}" alt="加载失败" class="ico-personal">
+                    <a href="{{ url('image/edit/'.$student->id)}}"><img src="{{$student->icon}}" alt="加载失败" class="ico-personal"></a>
                     <h2 class="name-detail">{{ $student->name }} <small>{{ $student->description}}</small></h2>
                     <p class="tag-detail">{{$student->tags}}</p>
 
                     <div class="personal-detail">
                         <div class="form-group">
-                            <label for="id">学号：{{ $student->id }}</label>
+                            <label for="id">学 号：{{ $student->id }}</label>
                         </div>
 
                         <div class="form-group">
-                            <label for="id">姓名：</h3>{{ $student->name }}</h3></label>
+                            <label for="id">姓 名：</h3>{{ $student->name }}</h3></label>
                         </div>
 
                         <div class="form-group">
@@ -26,21 +26,33 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="id">邮件：{{ $student->email }}</label>
+                            <label for="id">邮 件：{{ $student->email }}</label>
                         </div>
 
                         <div class="form-group">
-                            <label for="id">详细信息：{{ $student->resume }}</label>
+                            <label for="id">github：<a href="{{ $student->github }}">{{ $student->github }}</a></label>
                         </div>
+
+                        <div class="form-group">
+                            <label for="id">详细信息： {{ $student->resume}}</label>
+                        </div>
+
                     </div>
+                    <div class="personal-button">
+                        <a href="{{url('student/edit')}}"><button type="button" class="btn btn-primary">点击修改资料</button></a>
+                    </div>
+
                 </div>
 
                 <div class="personal-project">
                     <div class="project-box">            
-                        <h2>参与的项目</h2>
+                        <h2>参与的项目&nbsp <small><a href="{{ url('project/add')}}"><span class="glyphicon glyphicon-plus" aria-hidden="true">新增项目</span></a></small></h2>
                         <ul>
-
+                            @foreach($project as $projects)
+                            <li><a href="{{ url('/project/'.$projects->id)}}">{{$projects->name}}</a></li>
+                            @endforeach
                         </ul>
+
                     </div>
                     <div class="project-box">            
                         <h2>发表的博文</h2>
@@ -49,7 +61,7 @@
                         </ul>
                     </div>
                     <!-- Todo -->
-                    <div class="project-box">            
+<!--                     <div class="project-box">            
                         <h2>计划的任务</h2>
                         <section id="todoapp">
                                 <input
@@ -106,7 +118,7 @@
                                 </ul>
                             </footer>
                         </section>
-                    </div>
+                    </div> -->
                     <!-- Todo -->
                 </div>
             </div>
