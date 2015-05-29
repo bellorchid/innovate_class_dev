@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css"  href="{{ asset('/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css"  href="{{ asset('/css/style.css')}}">
-        <style type="text/css">
+    <script src="{{asset('/js/jquery-1.11.1.min.js')}}"></script>
+    <script src="{{asset('/js/bootstrap.min.js')}}"></script>
 
-
-    </style>
 </head>
 <body>
 <div class="header">
@@ -24,7 +23,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button> -->
-            <a class="navbar-brand" href="/">InnovateClass</a>
+            <a class="navbar-brand" href="{{url('/')}}">InnovateClass</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -46,10 +45,21 @@
                 <!--                        </ul>-->
                 <!--                    </li>-->
             </ul>
-
+            @if(!Auth::check())
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-toggle="modal" data-target="#login">登陆</a></li>
+                <li><a href="{{url('/login')}}" >登陆</a></li>
             </ul>
+            @else
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ url('/student/home')}}">个人中心</a></li>
+                        <li><a href="{{ url('/logout') }}">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+            @endif
         </div>
     </div>
 </nav><!-- /导航条 -->
@@ -65,8 +75,6 @@
     </div>
 </footer>
 </div>
-<script src="{{asset('/js/jquery-1.11.1.min.js')}}"></script>
-<script src="{{asset('/js/bootstrap.min.js')}}"></script>
 
 </body>
 

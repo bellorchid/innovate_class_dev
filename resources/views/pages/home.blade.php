@@ -14,21 +14,21 @@
             <img src="../public/images/news/3.jpg" alt="Chrome">
             <div class="carousel-caption">
                 <h1></h1>
-
+<!-- 
 
                 <p><a class="btn btn-lg btn-primary" href="http://www.google.cn/intl/zh-CN/chrome/browser/"
-                      role="button" target="_blank"></a></p>
+                      role="button" target="_blank"></a></p> -->
             </div>
         </div>
         <div class="item">
             <img src="../public/images/news/2.jpg" alt="Firefox">
             <div class="carousel-caption">
-                <h1></h1>
+<!--                 <h1></h1>
 
                 <p></p>
 
                 <p><a class="btn btn-lg btn-primary" href="http://www.firefox.com.cn/download/" target="_blank"
-                      role="button"></a></p>
+                      role="button"></a></p> -->
             </div>
         </div>
         <div class="item">
@@ -62,16 +62,17 @@
     <div class="row">
         <div class="col-md-8">
             <div class="row">
-                <div class="col-lg-12 students-list-a"><a href="/students" class="pull-right">更多成员</a></div>
+                <div class="col-lg-12 students-list-a"><a href="{{ url('students/')}}" class="pull-right">更多成员</a></div>
             </div>
 
             <div class="students-index">
                 <div class="row">
                     @foreach ($students as $student)
                     <div class="col-md-4">
-                        <div class="student-item">
-                            <a href=""><img class="icon" src="../public/images/icons/chrome-logo-small.jpg" /> <h3>{{ $student->name }}</h3></a>
-                            <a href="/students/{{ $student->id }}"><img class="photo" src="../public/images/news/chrome-big.jpg" /></a>
+                        <div class="student-item student-type">
+                            <a href="{{url('students/'.$student->id)}}"><img class="icon" src="{{ $student->icon}}" /> <h3>{{ $student->name }}</h3></a>
+                            </br></br>
+                            <a href="{{url('students/'.$student->id)}}"><img class="photo" src="{{ $student->photo}}" /></a>
                         </div>
                     </div>
                     @endforeach
@@ -81,7 +82,7 @@
 
         <div class="col-md-4">
             <div class="row">
-                <div class="col-lg-12 projects-list-a"><a href="/projects" class="pull-right">更多作品</a></div>
+                <div class="col-lg-12 projects-list-a"><a href="{{url('/projects')}}" class="pull-right">更多作品</a></div>
             </div>
 
             <div class="projects-index">
@@ -97,15 +98,15 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-12 projects-list-a"><a href="/projects" class="pull-right">更多新闻</a></div>
+                <div class="col-lg-12 projects-list-a"><a href="" class="pull-right">更多新闻</a></div>
             </div>
 
             <div class="projects-index">
                 <div class="row">
-                    @foreach ($projects as $project)
+                    @foreach ($events as $event)
                     <div class="col-md-12">
                         <div class="project-item">
-                            <a href="/projects/{{ $project->id }}"><h3>{{ $project->name }}</h3></a>
+                            <a href="projects/{{ $project->id }}"><h3>{{ $event->title }}</h3></a>
                         </div>
                     </div>
                     @endforeach

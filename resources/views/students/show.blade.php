@@ -2,24 +2,26 @@
 
 @section('content')
 <div class="container">
-</br></br></br>
+</br></br></br></br>
     <!-- 学生详情 -->
     <div class="student">
         <div class="row">
             <div class="col-md-9">
                 <div class="student-item">
-                    <img class="icon" src={{asset('images/icons/chrome-logo-small.jpg')}} /> <h3>{{ $student->name }}</h3>
+                    <img class="icon" src="{{$student->icon}}" /> <h3>{{ $student->name }}<small> {{$student->description}}</small></h3>
                     <div class="tags">
-                        @foreach ($student->tags as $tag)
-                        {{ $tag->name }}
-                        @endforeach
+                        {{ $student->tags }}
                     </div>
                     <hr class="divider" />
+                    <li>学号: {{ $student->id}}</li>
+                    </br>  
                     <li>邮箱: {{ $student->email }}</li>
-                    <li>手机号: {{ $student->detail->tel }}</li>
-                    <li>GitHub: <a href="{{ $student->detail->github }}">{{ $student->detail->github }}</a></li>
+                    </br>
+                    <li>手机号: {{ $student->tel }}</li>
+                    </br>
+                    <li>GitHub: <a href="{{ $student->github }}">{{ $student->github }}</a></li>
                     <hr class="divider" />
-                    <p>{{ $student->detail->resume }}</p>
+                    <h4>个人详细介绍:</h4><p>{{ $student->resume }}</p>
                 </div>
             </div>
             <div class="col-lg-3">
@@ -28,7 +30,7 @@
                     <hr class="divider" />
                     <ul>
                     @foreach ($student->projects as $project)
-                        <a href="/projects/{{ $project->id }}">{{ $project->name }}</a>
+                        <p><a href="/projects/{{ $project->id }}">{{ $project->name }}</a></p>
                     @endforeach
                     </ul>
                 </div>
@@ -36,4 +38,5 @@
         </div>
     </div>
 </div><!-- /内容 -->
+
 @endsection

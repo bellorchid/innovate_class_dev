@@ -4,16 +4,18 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
-
 use Auth;
 use Redirect;
-
-
+use EndaEditor;
+use DB;
+// use \Illuminate\Database\DatabaseManager;
 use App\Student;
 use App\StudentDetail;
 use App\Tag;
 use App\Project;
-
+use Input;
+use Image;
+use Storage;
 class StudentController extends Controller {
 
   //非登录用户显示学生纵览页
@@ -22,7 +24,6 @@ class StudentController extends Controller {
 		$students = Student::all();
 		return view('students.index')->withStudents($students)->withTitle("实验班成员");
     // return json_encode($students); //测试数据
-
 	}
 
   //非登录用户显示个人详细页面
@@ -69,7 +70,7 @@ class StudentController extends Controller {
       if (Auth::check()) {
           Auth::logout();
       }
-      return Redirect::route('login');
+      return Redirect::route('home');
   }
 
   // //只允许登录用户访问个人详细页,目前会出现重定向问题
@@ -82,21 +83,101 @@ class StudentController extends Controller {
   public function home()
   {
     $student = Auth::user();
+<<<<<<< HEAD
     $id = Auth::user()->id;
     $detail = StudentDetail::find($id);
     return view('admin.index')->withTitle("个人页面")->withStudent($student)->withDetail($detail);
+=======
+    // $id = Auth::user()->id;
+    // $projects = Project::all();
+    // $detail = StudentDetail::find($id);
+    if(!Auth::check()) {
+      return Redirect::route('login')->withErrors('请先登录后再访问该页面');
+
+    } else {
+      // $id = $student->id;
+      // $projects = Project::all();
+      $projects = Student::find($student->id)->projects;
+      return view('admin.index')->withTitle("个人页面")->withStudent($student)->withProject($projects);
+
+    }
+  }
+
+  public function resume()
+  {
+
+        return view('test',[
+            'content'=>EndaEditor::MarkDecode(Auth::user()->resume)
+        ]);
+>>>>>>> develop
   }
 
   //显示学生修改页
   public function edit()
   {
-
+    $student = Auth::user();
+    if(!Auth::check()) {
+      return Redirect::route('login')->withErrors('请先登录后再访问该页面');
+    } else {
+      return view('admin.edit')->withTitle('修改个人信息')->withStudent($student);
+    }
   }
 
   //更新学生个人信息
-  public function update()
+  public function update(Request $request)
   {
+    // $student = new Student;
+    // $student->id = Auth::user()->id;
+    $student = Student::where('id', Auth::user()->id)->first();
+    $student->tel = $request->tel;
+    $student->email = $request->email;
+    $student->github = $request->github;
+    $student->description = $request->description;
+    $student->tags = $request->tags;
+    $student->resume =$request->resume;
+    // $student->resume_md = EndaEditor::MarkDecode(Auth::user()->resume);
+    $student->save();
+    session()->flash('message', '个人信息修改成功');
 
+    return Redirect::route('stu_home');
+
+  } 
+
+  public function image_edit($id)
+  {
+    $student = Student::where('id',$id)->first();
+    return view('admin.image')->withTitle('修改我的头像')->withStudent($student);
+  }
+
+  public function image_update()
+  {
+    $student = Student::where('id',Auth::user()->id)->first();
+    if(Input::hasFile('icon')) {
+      Image::make(Input::file('icon'))->resize(80, 80)->save('./images/icons/'.Auth::user()->id.'.jpg');
+    }
+    if(Input::hasFile('photo')) {
+      Image::make(Input::file('photo'))->resize(400, 300)->save('./images/photos/'.Auth::user()->id.'.jpg');
+    }
+    $student->icon = url('images/icons/'.$student->id.'.jpg');
+    $student->photo = url('images/photos/'.$student->id.'.jpg');
+    $student->save();
+    session()->flash('message','个人信息修改成功');
+    return Redirect::route('stu_home');
+
+    // $img = Image::make($_FILES[$request->icon]['tmp_name']);
+    // return $img;
+
+
+  }
+
+  //测试方法
+  public function insert() {
+    $student = Student::find('12345678');
+    $project = project::find('12108238');
+    $user = new Student;
+    $results = DB::select('select * from users where id = ?', [1]);
+    $student->projects()->attach($project->id);
+    print_r($results);
   }
 
   //安卓接口测试方法，
@@ -105,6 +186,7 @@ class StudentController extends Controller {
     return response()->json(['name' => 'Abigail', 'state' => 'CA']);
   }
 
+<<<<<<< HEAD
  
   public function insert() {
     $student = Student::find('12345678');
@@ -116,4 +198,6 @@ class StudentController extends Controller {
   }
 
 
+=======
+>>>>>>> develop
 }

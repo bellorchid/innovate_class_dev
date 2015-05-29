@@ -1,19 +1,31 @@
 @extends('layout')
 
 @section('content')
-<div class="container">
-    <!-- 项目详情 -->
-    <div class="project">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="project-item">
-                    <h3>{{ $project->name }}</h3>
-                    <div class="project-students">
-                        @foreach ($project->students as $student)
-                        {{ $student->name }}
-                        @endforeach
-                    </div>
 
+<div class="container">
+</br></br></br></br>
+    <!-- 学生详情 -->
+    <div class="student">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="student-item">
+                <h1 align="center">项目详情</h1>
+                    <hr class="divider" />
+                    <li><h4>项目编号: {{ $project->id}}</h4></li>
+                    </br>  
+                    <li><h4>项目名称: {{ $project->name }}</h4></li>
+                    </br>
+                    <li><h4>项目成员:                         
+                        @foreach ($project->students as $student)
+                            {{ $student->name }}
+                        @endforeach </h4></li>
+                    </br>
+                    <li><h4>项目地址: <a href="{{ $project->address }}">{{ $project->address }}</a></h4></li>
+                    </br>
+                    <li><h4>Demo地址: <a href="{{ $project->demo }}">{{ $project->demo }}</a></h4></li>
+                    </br>
+                    <hr class="divider" />
+                    <h3>项目详情:</h3>  <h4>{{ $project->detail }}</h4>
                 </div>
             </div>
         </div>

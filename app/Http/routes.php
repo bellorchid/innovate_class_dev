@@ -47,12 +47,24 @@ Route::post('student/update', [
 
 //----------------- StudentProject Route -----------------
 
-Route::get('student/projects',[
-	'as' => 'stu_project', 'uses' => 'ProjectController@detail']);
-Route::get('project/edit', [
-	'as' => 'project_edit', 'uses' => 'ProjectController@deit']);
+Route::get('project/add',[
+    'as' => 'project_add', 'uses' => 'ProjectController@add_project']);
+Route::post('project/insert', [
+    'as' => 'project_insert', 'uses' => 'ProjectController@insert_project']);
+Route::get('student/project',[
+	'as' => 'stu_project', 'uses' => 'ProjectController@prolist']);
+Route::get('project/{projectId}', [
+	'as' => 'project_edit', 'uses' => 'ProjectController@edit']);
 Route::post('project/update', [
 	'as' => 'project_update', 'uses' => 'ProjectController@update']);
+
+
+//--------------------Image Route --------------------------
+
+Route::get('image/edit/{id}',[
+    'as' => 'image_edit', 'uses' => 'StudentController@image_edit']);
+Route::post('image/update', [
+    'as' => 'image_update', 'uses' => 'StudentController@image_update']);
 
 // -----------------  Android Api -------------------------
 
@@ -62,9 +74,12 @@ Route::get('/android',[
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> develop
 // -----------------  test -------------------------
 Route::get('/test', [
     'as' => 'test', 'uses' => 'StudentController@insert']);
